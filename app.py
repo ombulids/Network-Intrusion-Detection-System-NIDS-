@@ -66,117 +66,39 @@ elif home =="Attacker Check(Opearthing System)":
     with col2:
         OS = st.radio("Operating System",["Windows","Linux","Android","Mac"])
     AttackC = st.number_input("Attack Count",min_value=1000,max_value=3000)
-    st.write("Analyzing....")
-    if attacktype == "Neptune" and OS == "Windows":
-        st.success("Analysis Complete!")
-        if AttackC >1000 and AttackC<1500:
-            st.warning()
-            st.write()
-        elif AttackC>1500 and AttackC<2000:
-            st.warning()
-            st.write()
-        elif AttackC>2000 and AttackC<2500:
-            st.warning()
-            st.write()
-        elif AttackC>2500 and AttackC<3000:
-            st.warning()
-            st.write()
-    elif attacktype == "Satan" and OS == "Windows":
-        st.success("Analysis Complete!")
-        if AttackC >1000 and AttackC<1500:
-            st.warning()
-            st.write()
-        elif AttackC>1500 and AttackC<2000:
-            st.warning()
-            st.write()
-        elif AttackC>2000 and AttackC<2500:
-            st.warning()
-            st.write()
-        elif AttackC>2500 and AttackC<3000:
-            st.warning()
-            st.write()
-    elif attacktype == "Neptune" and OS == "Linux":
-        st.success("Analysis Complete!")
-        if AttackC >1000 and AttackC<1500:
-            st.warning()
-            st.write()
-        elif AttackC>1500 and AttackC<2000:
-            st.warning()
-            st.write()
-        elif AttackC>2000 and AttackC<2500:
-            st.warning()
-            st.write()
-        elif AttackC>2500 and AttackC<3000:
-            st.warning()
-            st.write()
-    elif attacktype == "Satan" and OS == "Linux":
-        st.success("Analysis Complete!")
-        if AttackC >1000 and AttackC<1500:
-            st.warning()
-            st.write()
-        elif AttackC>1500 and AttackC<2000:
-            st.warning()
-            st.write()
-        elif AttackC>2000 and AttackC<2500:
-            st.warning()
-            st.write()
-        elif AttackC>2500 and AttackC<3000:
-            st.warning()
-            st.write()
-    elif attacktype == "Neptune" and OS == "Mac":
-        st.success("Analysis Complete!")
-        if AttackC >1000 and AttackC<1500:
-            st.warning()
-            st.write()
-        elif AttackC>1500 and AttackC<2000:
-            st.warning()
-            st.write()
-        elif AttackC>2000 and AttackC<2500:
-            st.warning()
-            st.write()
-        elif AttackC>2500 and AttackC<3000:
-            st.warning()
-            st.write()
-    elif attacktype == "Satan" and OS == "Mac":
-        st.success("Analysis Complete!")
-        if AttackC >1000 and AttackC<1500:
-            st.warning()
-            st.write()
-        elif AttackC>1500 and AttackC<2000:
-            st.warning()
-            st.write()
-        elif AttackC>2000 and AttackC<2500:
-            st.warning()
-            st.write()
-        elif AttackC>2500 and AttackC<3000:
-            st.warning()
-            st.write()
-    elif attacktype == "Neptune" and OS == "Android":
-        st.success("Analysis Complete!")
-        if AttackC >1000 and AttackC<1500:
-            st.warning()
-            st.write()
-        elif AttackC>1500 and AttackC<2000:
-            st.warning()
-            st.write()
-        elif AttackC>2000 and AttackC<2500:
-            st.warning()
-            st.write()
-        elif AttackC>2500 and AttackC<3000:
-            st.warning()
-            st.write()
-    elif attacktype == "Satan" and OS == "Andriod":
-        st.success("Analysis Complete!")
-        if AttackC >1000 and AttackC<1500:
-            st.warning()
-            st.write()
-        elif AttackC>1500 and AttackC<2000:
-            st.warning()
-            st.write()
-        elif AttackC>2000 and AttackC<2500:
-            st.warning()
-            st.write()
-        elif AttackC>2500 and AttackC<3000:
-            st.warning()
-            st.write()
-
+    button = st.button("Sumit")
+    if button == True:
+        st.write("Analyzing....")
+        if attacktype == "Neptune":
+                st.success("Analyzing complete")
+                st.warning(f"🚨 WARNING: High Traffic Attack")
+                if OS == "Windows":
+                    st.write("Your **Windows** system's connection points are clogged, like a traffic jam. Services are timing out.")
+                elif OS == "Linux" or OS == "Mac":
+                   st.write(f"Your {OS} kernel is struggling to process the massive flood of fake connection requests. Expect process failures.")
+                elif OS == "Android":
+                    st.write(f"Your Android device feels frozen and is rapidly draining battery due to network overload.")
+                    
+        elif attacktype == "Satan":
+                st.success("Analyzing complete")
+                st.warning(f" WARNING: System Scouting Attack")
+                if OS == "Windows":
+                    st.write(f"An attacker is aggressively knocking on every virtual door on your **Windows** machine, looking for an open security flaw.")
+                elif OS == "Linux" or OS == "Mac":
+                    st.write(f"Automated tools are bombarding your {OS} ports to map vulnerabilities. Your security logs are filling up quickly.")
+                elif OS == "Android":
+                    st.write(f"A high-volume port scan is hitting your Android device, searching for any way to compromise its privacy settings.")
+        if 1000 < AttackC <= 1500:
+                severity = "Low"
+                status = "The system is starting to feel slightly slow."
+        elif 1500 < AttackC <= 2000:
+                st.write("Medium")
+                st.write("Internet activity is noticeably delayed, and some applications may stop responding.")
+        elif 2000 < AttackC <= 2500:
+                st.write("High")
+                st.write("Core functions are failing. You might lose connection completely.")
+        elif 2500 < AttackC < 3000:
+                st.write("Critical")
+                st.write("The entire system has crashed or is completely frozen.")
+        else:
+            print( "No immediate threat detected in this range.")
