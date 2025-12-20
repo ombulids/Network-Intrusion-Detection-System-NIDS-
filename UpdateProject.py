@@ -189,9 +189,17 @@ else:
                     }
                 packet_list.append(packet_Infio)
 
-            sc.sniff(prn = Packet_1,store=0,count =10 )
+            sc.sniff(prn = Packet_1,store=0,count =10)
 
             live_data = pd.DataFrame(packet_list)
+            st.success("Anyalize Completed")
+            st.dataframe(live_data)
+            large_packet = live_data[live_data['Length']>1000]
+
+            if not large_packet.empty():
+                st.Warning(f"Large Number of packet{large_packet} are entering ur Network ")
+            else:
+                st.warning("Nothing issue in your Network Traffic")
             
 
     
