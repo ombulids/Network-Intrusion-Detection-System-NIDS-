@@ -120,7 +120,7 @@ else:
                 st.error(f"Error during processing: {e}")
 
     # --- TAB 2: ATTACK CHECKER ---
-    elif home == "Attacker Check(Opearthing System)":
+    elif home == "Attacker Check(Opearting System)":
         col1, col2 = st.columns(2)
         with col1:
             attacktype = st.radio("Attack type", ["Neptune", "Satan"])
@@ -171,21 +171,23 @@ else:
             st.warning("🚨 WARNING: It will use your live Network  Data")
             st.write("Scaning the Network")
             packet_list = []
-            def Packet_1(packets):
-                if sc.IP in packets:
-                    Data_src = packets[sc.IP].src
-                    Data_dst = packets[sc.IP].dst
-                    Data_proto = packets[sc.IP].proto
-                    length = len(packets)
-                if Data_proto == 6: p_type ="Tcp"
-                elif Data_proto == 17: p_type ="UDP"
+            def Packet_1(packet):
+                if sc.IP in packet:
+                    Data_src = packet[sc.IP].src
+                    Data_dst = packet[sc.IP].dst
+                    Data_proto = packet[sc.IP].proto
+                    length = len(packet)
+                if Data_proto == 6:
+                    p_type ="Tcp"
+                elif Data_proto == 17: 
+                    p_type ="UDP"
                 else: p_type = "Other"
                 packet_Infio=   {
                     "Source IP": Data_src,
                     "Destination IP": Data_dst,
                     "Protocol": p_type,
                     "Length": length,
-                    "Info": packets.summary()
+                    "Info": packet.summary()
                     }
                 packet_list.append(packet_Infio)
 
@@ -197,7 +199,7 @@ else:
             large_packet = live_data[live_data['Length']>1000]
 
             if not large_packet.empty():
-                st.Warning(f"Large Number of packet{large_packet} are entering ur Network ")
+                st.warningarning(f"Large Number of packet{large_packet} are entering ur Network ")
             else:
                 st.warning("Nothing issue in your Network Traffic")
             
