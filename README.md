@@ -60,7 +60,7 @@ sudo apt-get install python3-pip libpcap0.8
 Step 1: Clone the Repository
 Bash
 
-git clone https://github.com/your-username/network-intrusion-detection.git
+git clone https://github.com/ombulids/Network-Intrusion-Detection-System-NIDS-
 cd network-intrusion-detection
 Step 2: Install Dependencies
 Run the following command to install the required Python libraries:
