@@ -2,7 +2,9 @@ import streamlit as st
 import pandas as pd
 import joblib
 import os
-import sys
+import requests as rp
+from bs4 import BeautifulSoup as b
+from urllib.parse import urljoin
 import scapy.all as sc
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
@@ -76,7 +78,7 @@ else:
 
     # Header
     st.header("Network Intrusion Detection system")
-    home = st.sidebar.radio("Chose The Model", ["Intruder Detector", "Attacker Check(Opearthing System)","Live Detection"])
+    home = st.sidebar.radio("Chose The Model", ["Intruder Detector", "Attacker Check(Opearthing System)","Live Detection","Web Vulnerability Scanner"])
 
     # --- TAB 1: INTRUDER DETECTOR ---
     if home == "Intruder Detector":
@@ -199,9 +201,49 @@ else:
                             st.error("No packets captured. Ensure you are running with sudo.")
                     except Exception as e:
                         st.error(f"Error capturing packets: {e}")
-            
 
-    
-            
 
-    
+    elif home == "Web Vulnerability Scanner":
+        st.header("Web Vulnerability Scanner")
+
+        url = st.text_input("Upload Url")
+        xss = "<script>alert('Vulnerable')</script>"
+        def get(url):
+            try:
+                    r = rp.get(url , timeout=5)
+                    s = b(r.text ,'html.parser')
+                    return s.find_all('form')
+            except Exception as e:
+                        st.write(f"[-] Error fetching {url}: {e}")
+                        return []
+        def vulnerability(url):
+                forms = get(url)
+                for form in forms:
+                    action = form.attrs.get("action")
+                    post_url = urljoin(url, action)
+
+                    # Get all input fields (name and type)
+                    inputs = form.find_all('input')
+                    method = form.attrs.get("method", "get").lower()
+                    data ={}
+                    for input_tag in inputs:
+                            input_name = input_tag.attrs.get("name")
+                            input_type = input_tag.attrs.get("type", "text")
+                            if input_type in ["text", "search"]:
+                                data[input_name] = xss
+                            if method == "post":
+                                res = rp.post(post_url, data=data)
+                            else:
+                                res = rp.get(post_url, params=data)
+                            if xss in res.text:
+                                st.warning(f"XSS potential detected at {post_url} ")
+
+                            errors = ["you have an error in your sql syntax", "unclosed quotation mark", "mysql_fetch_array"]
+                            for error in errors:
+                                if error in res.text.lower():
+                                    st.warning(f"SQL Injection potential detected at {post_url}")
+                                    break
+        vulnerability(url)
+                        
+
+                
