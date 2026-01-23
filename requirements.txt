@@ -3,3 +3,6 @@ pandas
 scikit-learn
 joblib
 scapy
+requests
+BeautifulSoup
+urljoin

@@ -1,3 +1,4 @@
+# All libarys Required
 import streamlit as st
 import pandas as pd
 import joblib
@@ -10,6 +11,9 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
+
+
+# Traing Model Path
 TRAIN_DATA_PATH = "KDDTrain+.txt"
 MODEL_PATH = "Model_Nids.pkl"
 
@@ -80,6 +84,7 @@ else:
     st.header("Network Intrusion Detection system")
     home = st.sidebar.radio("Chose The Model", ["Intruder Detector", "Attacker Check(Opearthing System)","Live Detection","Web Vulnerability Scanner"])
 
+
     # --- TAB 1: INTRUDER DETECTOR ---
     if home == "Intruder Detector":
         st.title("Upload Network Log files")
@@ -121,6 +126,8 @@ else:
             except Exception as e:
                 st.error(f"Error during processing: {e}")
 
+
+
     # --- TAB 2: ATTACK CHECKER ---
     elif home == "Attacker Check(Opearthing System)":
         col1, col2 = st.columns(2)
@@ -136,6 +143,7 @@ else:
             st.write("Analyzing....")
             
             # Logic for Attack Types
+
             if attacktype == "Neptune":
                 st.success("Analyzing complete")
                 st.warning(f"🚨 WARNING: High Traffic Attack")
@@ -167,7 +175,7 @@ else:
                 st.write("No immediate threat detected in this range.")
 
 
-        # ============LIVE DETECTION==================================================
+ # ============LIVE DETECTION==================================================
 
     elif home == "Live Detection":
             st.header("Live Detection Model")
@@ -201,6 +209,7 @@ else:
                             st.error("No packets captured. Ensure you are running with sudo.")
                     except Exception as e:
                         st.error(f"Error capturing packets: {e}")
+
 
 # =======Web Vulnerability Scanner=========#
     elif home == "Web Vulnerability Scanner":
@@ -242,8 +251,7 @@ else:
                             for error in errors:
                                 if error in res.text.lower():
                                     st.warning(f"SQL Injection potential detected at {post_url}")
-                                    break
-                                
+                                    break                         
         vulnerability(url)
                         
 
