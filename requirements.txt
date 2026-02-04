@@ -6,3 +6,6 @@ scapy
 requests
 BeautifulSoup
 urljoin
+urllib.parse
+urlparse
+unquote
