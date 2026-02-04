@@ -207,7 +207,7 @@ else:
                                     prediction = model.predict(transformed_payload)
 
                                     if prediction[0] == 1:
-                                        packet_list["Status"] = "🚨 ATTACK"
+                                        packet_info["Status"] = "🚨 ATTACK"
                                         alt.append({
                                             "Time": packet.summary().split()[0],
                                             "Source": f"{packet[sc.IP].src}:{packet[sc.TCP].sport if packet.haslayer(sc.TCP) else 'N/A'}",

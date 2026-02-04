@@ -1,11 +1,7 @@
 streamlit
 pandas
-scikit-learn
 joblib
+scikit-learn
 scapy
 requests
-BeautifulSoup
-urljoin
-urllib.parse
-urlparse
-unquote
+beautifulsoup4
