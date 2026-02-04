@@ -27,6 +27,21 @@ This project combines two core security pillars into one interface:
 
 ## 📦 Installation & Usage
 1. **Clone the Repo:**
+Linux/Mac:
+
+Bash
+sudo streamlit run app.py
+📊 Technical Stack
+Framework: Streamlit
+
+Data Science: Pandas, Scikit-Learn, Joblib
+
+Networking: Scapy
+
+Cybersecurity: Requests, BeautifulSoup4
+
+⚠️ Disclaimer
+This tool is for educational and ethical security testing only. Sniffing network traffic or scanning websites without authorization is illegal. The developers are not responsible for any misuse of this software.
    ```bash
    git clone https://github.com/ombulids/Network-Intrusion-Detection-System-NIDS-.git
 2 . **Deployed Link:**
