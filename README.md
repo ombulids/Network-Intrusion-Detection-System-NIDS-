@@ -29,4 +29,7 @@ This project combines two core security pillars into one interface:
 1. **Clone the Repo:**
    ```bash
    git clone https://github.com/ombulids/Network-Intrusion-Detection-System-NIDS-.git
+2 . **Deployed Link:**
+  '''bash
+  https://networkdetection.streamlit.app/
   
